@@ -1,0 +1,3 @@
+[submodule "rails-w4-project"]
+	path = rails-w4-project
+	url = git@github.com:onurrsalmann/rails-w4-project.git

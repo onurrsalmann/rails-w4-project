@@ -5,7 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :books
-  #validates :username, presence: true, uniqueness: { case_sensitive: false }
+  validates :username, presence: true
+  validates_length_of :username, minimum: 5, maximum: 25
   validate :validate_username
 
   def login

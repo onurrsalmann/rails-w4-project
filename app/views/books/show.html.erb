@@ -19,6 +19,8 @@
   <strong>Share:</strong>
   <%= @book.share %>
 </p>
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<% if current_user == @book.user %>
+  <td><%= link_to 'Edit', edit_book_path(@book) %></td>
+  <td><%= link_to 'Delete', books_path,
+                  data: { confirm: 'Are you sure?' } %></td>
+<% end %>

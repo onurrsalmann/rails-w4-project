@@ -1,0 +1,32 @@
+<h1>BooksShare</h1>
+<% if @my_books %>
+  <h2>Your Books</h2>
+  <%= link_to 'See my books', books_url %>
+<% end %>
+<h2>Books</h2>
+<% if @books.any? %>
+  <table>
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Pagecount</th>
+      <th>Added Book</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.author %></td>
+        <td><%= book.pagecount %></td>
+        <td><%= book.email %></td>
+        <td><%= link_to 'Show', book %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h3>Henüz hiç kitap eklenmemiş.</h3>
+<% end %>

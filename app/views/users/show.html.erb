@@ -1,6 +1,7 @@
-<h1>BooksShare</h1>
-
-<h2>Books</h2>
+<h1>Profile</h1>
+<h3>Username: <%= @user.username %></h3>
+<h3>Email: <%= @user.email %></h3>
+<h3>Books</h3>
 <% if @books.any? %>
   <table>
     <thead>
@@ -14,10 +15,11 @@
       <tr>
         <td><%= book.title %></td>
         <td><%= book.author %></td>
+        <td><%= link_to 'Show', book %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
 <% else %>
-  <h3>Henüz hiç kitap eklenmemiş.</h3>
+  <h4>Henüz hiç kitap eklenmemiş.</h4>
 <% end %>

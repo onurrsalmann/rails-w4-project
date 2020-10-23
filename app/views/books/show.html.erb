@@ -24,3 +24,34 @@
   <td><%= link_to 'Delete', books_path,
                   data: { confirm: 'Are you sure?' } %></td>
 <% end %>
+<hr>
+<h3> Comments</h3>
+<% @comments.each do |comment| %>
+  <p>
+    <strong>Title:</strong>
+    <%= comment.title %>
+  </p>
+  <p>
+    <strong>Content:</strong>
+    <%= comment.content %>
+  </p>
+<% end %>
+<hr>
+
+<h3>Add Comments</h3>
+<%= form_with(model: [ @book, @book.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :content %><br>
+    <%= form.text_field :content %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+<hr>
+
+

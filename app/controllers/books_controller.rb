@@ -11,7 +11,8 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
-    @comments = @book.comments.where(allow: true)
+    #@comments = @book.comments.where(allow: true)
+    redirect_to :controller => 'dashboard', :action => 'index'
   end
 
   # GET /books/new

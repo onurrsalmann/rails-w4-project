@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!
 
   # GET /books
   # GET /books.json
@@ -11,8 +11,9 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
-    #@comments = @book.comments.where(allow: true)
-    redirect_to :controller => 'dashboard', :action => 'index'
+    @comments = @book.comments.where(allow: true)
+    @allow_comments = @book.comments.where(allow: false, user_id: current_user.id)
+    #redirect_to :controller => 'dashboard', :action => 'index'
   end
 
   # GET /books/new

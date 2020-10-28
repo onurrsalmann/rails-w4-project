@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong>Username:</strong>
+  <%= @book.username %>
+</p>
+
+<p>
   <strong>Pagecount:</strong>
   <%= @book.pagecount %>
 </p>
@@ -25,21 +30,16 @@
                   data: { confirm: 'Are you sure?' } %></td>
 <% end %>
 <hr>
+<div id="flash_notice"></div>
 <h3> Comments</h3>
-<% @comments.each do |comment| %>
-  <p>
-    <strong>Title:</strong>
-    <%= comment.title %>
-  </p>
-  <p>
-    <strong>Content:</strong>
-    <%= comment.content %>
-  </p>
-<% end %>
+<%= render @comments %>
+<h4> Permission to Comments</h4>
+<%= render @allow_comments %>
+<div class="comments"></div>
 <hr>
 
 <h3>Add Comments</h3>
-<%= form_with(model: [ @book, @book.comments.build ], local: true) do |form| %>
+<%= form_with(model: [ @book, @book.comments.build ], local: false) do |form| %>
   <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>

@@ -1,12 +1,16 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!
   def create
     @book = Book.find(params[:book_id])
     @comment = @book.comments.create(comment_params)
     @comment.user_id = current_user.id
-    @comment.allow = false
+    # if @book.user_id.eql?(current_user.id)
+    #   @comment.allow = true
+    # end
     @comment.save
-    redirect_to user_path(User.find(@book.user_id))
+    respond_to do |format|
+      format.js
+    end
   end
 
   def show

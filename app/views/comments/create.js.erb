@@ -1,2 +1,4 @@
 $("#flash_notice").html("Your review is under review for approval");
 $(".comments").append("<%= escape_javascript(render(@comment)) %>");
+$("input#comment_title").val('');
+$("input#comment_content").val('');

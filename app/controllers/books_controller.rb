@@ -13,7 +13,6 @@ class BooksController < ApplicationController
   def show
     @comments = @book.comments.where(allow: true)
     @allow_comments = @book.comments.where(allow: false, user_id: current_user.id)
-    #redirect_to :controller => 'dashboard', :action => 'index'
   end
 
   # GET /books/new
@@ -73,6 +72,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :author, :pagecount, :share)
+      params.require(:book).permit(:title, :author, :pagecount, :share, :t_status)
     end
 end

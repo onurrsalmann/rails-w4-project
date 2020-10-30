@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_27_134539) do
+ActiveRecord::Schema.define(version: 2020_10_28_224901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_10_27_134539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.boolean "t_status", default: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -31,6 +32,14 @@ ActiveRecord::Schema.define(version: 2020_10_27_134539) do
     t.boolean "allow", default: false
     t.integer "user_id"
     t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tradeables", force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "user_id"
+    t.string "status", default: "waiting"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

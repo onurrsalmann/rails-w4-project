@@ -1,0 +1,10 @@
+<h1>
+  <%=@book.title%> adlı kitap <%= @book.username %> tarafından paylaşıldı.
+</h1>
+<h2>
+  Hangi kitabı öneriyorsunuz?
+</h2>
+<%= form_with(model: [ @book, @book.build_tradeable ], local: false) do |form| %>
+  <%= form.select :book_id, Book.where(user_id: current_user.id).collect { |p| [ p.title, p.id ] }, include_blank: true %>
+  <%= form.submit %>
+<% end %>

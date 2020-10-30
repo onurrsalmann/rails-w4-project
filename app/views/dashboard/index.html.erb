@@ -68,3 +68,12 @@
     <br>
   </tr>
 <% end %>
+<hr>
+<h2>Your Tradeable Request</h2>
+<%= render @my_tradeables %>
+
+<h2>My Book Request</h2>
+<% @tradeables_req.each do |tradeable|%>
+  <%= Book.find(tradeable.book_id).title %> kitabına <%= User.find(tradeable.user_id).username %> istek gönderdi. <%= link_to 'Görüntüle', book_tradeable_path(tradeable.book_id, tradeable) %>
+  <br>
+<% end %>

@@ -3,6 +3,7 @@ class Book < ApplicationRecord
   validates :author, presence: true
 
   has_many :comments
+  has_one :tradeable
   belongs_to :user
   delegate :username, to: :user
 end

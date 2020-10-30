@@ -24,6 +24,11 @@
   <strong>Share:</strong>
   <%= @book.share %>
 </p>
+
+<p>
+  <strong>Tradeable Status:</strong>
+  <%= @book.t_status %>
+</p>
 <% if current_user == @book.user %>
   <td><%= link_to 'Edit', edit_book_path(@book) %></td>
   <td><%= link_to 'Delete', books_path,

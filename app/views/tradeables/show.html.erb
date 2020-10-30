@@ -1,0 +1,4 @@
+<%= @tradeable.user.username %>, <%= Book.find(@tradeable.book_id).title %> kitabını önerdi.
+
+<%= link_to 'Kabul Et', controller:"tradeables", action:"accept" %>
+<%#= link_to 'Reddet', controller:"tradeables", action:"deny" %>

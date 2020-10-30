@@ -8,6 +8,7 @@
       <th>Title</th>
       <th>Author</th>
       <th>Username</th>
+      <th>Tradeable Status</th>
     </tr>
     </thead>
     <tbody>
@@ -16,6 +17,12 @@
         <td><%= book.title %></td>
         <td><%= book.author %></td>
         <td><%= book.username %></td>
+        <td>
+        <%= if book.t_status
+              link_to book.t_status, new_book_tradeable_path(book)
+           else
+             book.t_status
+         end %></td>
         <% if current_user %>
           <td><%= link_to 'Show', book %></td>
         <% end %>
